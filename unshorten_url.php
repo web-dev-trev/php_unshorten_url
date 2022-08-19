@@ -10,9 +10,9 @@
 function unshorten_url($url) {
     $ch = curl_init($url);
     curl_setopt_array($ch, array(
-        CURLOPT_FOLLOWLOCATION => TRUE,  // the magic sauce
+        CURLOPT_FOLLOWLOCATION => TRUE,
         CURLOPT_RETURNTRANSFER => TRUE,
-        CURLOPT_SSL_VERIFYHOST => FALSE, // suppress certain SSL errors
+        CURLOPT_SSL_VERIFYHOST => FALSE,
         CURLOPT_SSL_VERIFYPEER => FALSE, 
     ));
     curl_exec($ch);
@@ -22,13 +22,11 @@ function unshorten_url($url) {
     echo'url:'.$url;
     }
 
-    if(isset($_POST["submit"])){
+if(isset($_POST["submit"])){
     $urls = $_POST["urls"];   
     }
     $pattern = '/(?:[^\s]+@[a-z]+(\.[a-z]+)+)|(?:(?:(?:[a-z]+:\/\/)|(?!\s))[a-z]+(\.[a-z]+)+(\/[^\s]*)?)/';
-
     preg_match_all($pattern, $urls, $out);
-
     $count = count($out[0]);
     echo "<b> Number of URLS</b> =" .$count."<br>";
     for ($row=0; $row<$count;$row++){
@@ -39,9 +37,9 @@ function unshorten_url($url) {
 
         $ch = curl_init($url);
         curl_setopt_array($ch, array(
-        CURLOPT_FOLLOWLOCATION => TRUE,  // the magic sauce
+        CURLOPT_FOLLOWLOCATION => TRUE,
         CURLOPT_RETURNTRANSFER => TRUE,
-        CURLOPT_SSL_VERIFYHOST => FALSE, // suppress certain SSL errors
+        CURLOPT_SSL_VERIFYHOST => FALSE,
         CURLOPT_SSL_VERIFYPEER => FALSE, 
         ));
         curl_exec($ch);
